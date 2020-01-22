@@ -1,0 +1,41 @@
+--- busybox-1.24.1/miscutils/i2c_tools.c.orig	2017-08-23 16:47:26.513832778 +0200
++++ busybox-1.24.1/miscutils/i2c_tools.c	2017-08-23 16:53:55.968562521 +0200
+@@ -70,6 +70,13 @@
+ #define I2CDETECT_MODE_QUICK		1
+ #define I2CDETECT_MODE_READ		2
+ 
++#ifndef I2C_SMBUS_I2C_BLOCK_BROKEN
++#define I2C_SMBUS_I2C_BLOCK_BROKEN 6
++#endif
++#ifndef I2C_FUNC_SMBUS_PEC
++#define I2C_FUNC_SMBUS_PEC 0x00000008
++#endif
++
+ /*
+  * This is needed for ioctl_or_perror_and_die() since it only accepts pointers.
+  */
+--- busybox-1.24.1/networking/libiproute/iproute.c.orig	2017-10-26 13:55:35.642106397 +0200
++++ busybox-1.24.1/networking/libiproute/iproute.c	2017-10-26 13:55:54.805583434 +0200
+@@ -18,6 +18,9 @@
+ #define RTAX_RTTVAR RTAX_HOPS
+ #endif
+ 
++#ifndef RTA_TABLE
++#define RTA_TABLE  15
++#endif
+ 
+ struct filter_t {
+ 	int tb;
+--- busybox-1.24.1/networking/libiproute/iprule.c.orig	2017-10-26 13:59:37.776498653 +0200
++++ busybox-1.24.1/networking/libiproute/iprule.c	2017-10-26 14:00:09.591630433 +0200
+@@ -21,6 +21,10 @@
+ #include "rt_names.h"
+ #include "utils.h"
+ 
++#ifndef RTA_TABLE
++#define RTA_TABLE  15
++#endif
++
+ /*
+ static void usage(void) __attribute__((noreturn));
+ 

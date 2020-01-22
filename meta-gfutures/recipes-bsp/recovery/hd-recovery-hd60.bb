@@ -1,0 +1,7 @@
+SRCDATE = "20191020"
+require hd-recovery.inc
+
+SRC_URI[md5sum] = "9fdcc2f298ef21546fb45068724516e7"
+SRC_URI[sha256sum] = "36b2b2f5cd255a87e706862805abff545ab20b0240b5b4da149cf8416d27abb6"
+
+COMPATIBLE_MACHINE = "hd60"
